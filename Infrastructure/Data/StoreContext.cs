@@ -19,6 +19,7 @@ namespace Infrastructure.Data
             base.OnModelCreating(modelBuilder);
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());       
 
+            // Important for Sqlite: when working with decimals, we have to convert them to double, as shown in the code below
             if (Database.ProviderName == "Microsoft.EntityFrameworkCore.Sqlite")
             {
                 foreach ( var entityType in modelBuilder.Model.GetEntityTypes())
